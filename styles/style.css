@@ -18,6 +18,9 @@
   background-image: var(--bg-gradient);
   background-size: cover;
   background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .header {
