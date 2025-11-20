@@ -13,4 +13,6 @@ linear-gradient(#e7e7e7, #1a1a1a);
 --block-border: 2px solid rgba(0, 0, 0, 1);
 --text-color:white;
 --accent-color:rgba(0, 0, 0, 1);
+--contour-color:black;
+--animation-fill-color:#FF0000;
 }

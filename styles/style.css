@@ -6,7 +6,7 @@
 ✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
+✦ card__like-button — для обозначения текстового элемента внутри кнопки
 
 */
 
@@ -90,22 +90,24 @@
   line-height: 21px;
 }
 
-.card__icone-button {
+.card__icon-button {
   background-color: transparent;
   border: transparent;
   transition: border 0.3s ease;
+  padding: 0;
 }
 
-.button__text {
+.card__like-button {
   background-color: transparent;
   border: var(--block-border);
-  padding: 12.5px 35px;
+  padding: 12.5px 17px;
   font-family: var(--accent-font);
   font-size: 14px;
   line-height: 90%;
   transition: box-shadow 0.3s ease;
   position: relative;
   background-color: var(--text-color);
+  min-width: 130px;
 }
 
 .button-group-decoration {
@@ -123,13 +125,22 @@
   mix-blend-mode: difference;
 }
 
-.save-button {
+.save-button-group {
   display: flex;
   justify-content: center;
+  padding: 0 34.5px;
 }
 
-.save__button-padding {
+.save__button {
   padding: 16px 17px;
+  background-color:transparent;
+  border: var(--block-border);
+  font-family: var(--accent-font);
+  font-size: 14px;
+  line-height: 90%;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  background-color: var(--text-color);
 }
 
 .image__label {
@@ -161,6 +172,7 @@
   padding: 30px 40px;
 }
 
+
 .dialog__text {
   font-family: "PressStart2P-Regular", sans-serif;
   font-weight: 400;
@@ -176,7 +188,74 @@
   width: 65px;
 }
 
+.countour {
+transition: 0.1s fill linear;
+}
+
+.core {
+  transition: 0.3s fill linear 0.03s;
+}
+
+.main-body {
+  transition: 0.3s fill linear;
+}
+
+.like-icon {
+  transform-origin: center
+}
+
+.like-icon:hover .core {
+  fill: var(--contour-color);
+transition: 0.3s fill linear;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--contour-color);
+transition: 0.3s fill linear 0.05s;
+}
+
+.like-icon:active .core {
+  fill: var(--animation-fill-color);
+transition: 0.3s fill linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--animation-fill-color);
+transition: 0.3s fill linear 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color);
+  transition: 0.3s fill linear 0.06s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  transition: 0.3s fill linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  transition: 0.3s fill linear 0.05s;
+}
+
+.like-icon.is-liked .heart {
+  animation: heart 0.3s ease-in 0.1s;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks 0.3s ease-in 0.3s;
+}
+
+
 .button__label {
+  position: relative;
+  z-index: 1;
+  color: var(--text-color);
+  mix-blend-mode: difference;
+}
+
+.button__text {
   position: relative;
   z-index: 1;
   color: var(--text-color);
@@ -225,12 +304,12 @@
   filter: invert(100%);
 }
 
-.button__text:focus {
+.card__like-button:focus {
   outline: none;
   box-shadow: 2px 2px 0 var(--accent-color);
 }
 
-.button__text::before {
+.card__like-button::before {
   content: "";
   position: absolute;
   left: 0;
@@ -244,15 +323,15 @@
   z-index: 0;
 }
 
-.button__text:hover::before {
+.card__like-button:hover::before {
   transform: scaleX(1);
 }
 
-.card__icone-button:focus {
+.card__icon-button:focus {
   outline: transparent;
 }
 
-.card__icone-button:focus-visible {
+.card__icon-button:focus-visible {
   border: 2px solid var(--accent-color);
   height: 41px;
 
@@ -261,6 +340,10 @@
 
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.75);
+}
+
+.sparks {
+  opacity: 0;
 }
 
 @media (width <= 375px) {
@@ -284,15 +367,6 @@ dialog::backdrop {
     width: 100%;
   }
 
-  .save-button {
-    padding: 0 34.5px;
-  }
-
-  .save__button-padding {
-    display: flex;
-    flex-direction: column;
-  }
-
   .button__icone {
     height: 28px;
     width: 28px;
@@ -306,4 +380,40 @@ dialog::backdrop {
     content: "";
     display: block;
   }
+
+  .dialog {
+    width: 341px;
+    height: 191px;
+    overflow: hidden;
+  }
+
+.save__button {
+  display: flex;
+  flex-direction: column;
 }
+
+}
+
+.save__button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.save__button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+  z-index: 0;
+}
+
+.save__button:hover::before {
+  transform: scaleX(1);
+}
+
