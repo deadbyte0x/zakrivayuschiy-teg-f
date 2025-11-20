@@ -109,7 +109,6 @@
   line-height: 90%;
   transition: box-shadow 0.3s ease;
   position: relative;
-  background-color: var(--text-color);
   min-width: 130px;
 }
 
@@ -143,7 +142,6 @@
   line-height: 90%;
   transition: box-shadow 0.3s ease;
   position: relative;
-  background-color: var(--text-color);
 }
 
 .image__label {
@@ -351,6 +349,7 @@ dialog::backdrop {
 
 @media (width <= 375px) {
   .header {
+    min-block-size: 327px;
     margin: 100px 0;
   }
   .main-content {
@@ -359,10 +358,6 @@ dialog::backdrop {
 
   .header-logo__group {
     padding: 122.5px 16px;
-  }
-
-  .header {
-    min-block-size: 327px;
   }
 
   .main-card__image {
